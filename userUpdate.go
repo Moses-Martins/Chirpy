@@ -60,6 +60,7 @@ func (cfg *apiConfig) UserUpdate(w http.ResponseWriter, req *http.Request) {
 		CreatedAt: userDb.CreatedAt,
 		UpdatedAt: userDb.UpdatedAt,
 		Email:    userDb.Email,
+		IsChirpyRed: userDb.IsChirpyRed,
 	}
 
 	data, err := json.Marshal(respBody)

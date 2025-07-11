@@ -22,6 +22,7 @@ type User struct {
 	UpdatedAt time.Time `json:"updated_at"`
 	Email     string    `json:"email"`
 	Password string `json:"password"`
+	IsChirpyRed bool `json:"is_chirpy_red"`
 }
 
 
@@ -30,6 +31,7 @@ type UserDisplayed struct {
 	CreatedAt time.Time `json:"created_at"`
 	UpdatedAt time.Time `json:"updated_at"`
 	Email     string    `json:"email"`
+	IsChirpyRed bool `json:"is_chirpy_red"`
 	Token string `json:"token"`
 	RefreshToken string `json:"refresh_token"`
 }
@@ -64,6 +66,7 @@ func (cfg *apiConfig) Login(w http.ResponseWriter, req *http.Request) {
             UpdatedAt: dbUser.UpdatedAt,
             Email:      dbUser.Email,
 			Password: dbUser.HashedPassword,
+			IsChirpyRed: dbUser.IsChirpyRed,
         }
         dbToStruct = append(dbToStruct, userResp)
     }
@@ -111,6 +114,7 @@ func (cfg *apiConfig) Login(w http.ResponseWriter, req *http.Request) {
 		CreatedAt: respBodyInitial.CreatedAt,
 		UpdatedAt: respBodyInitial.UpdatedAt,
 		Email: respBodyInitial.Email,
+		IsChirpyRed: respBodyInitial.IsChirpyRed,
 		Token: token,
 		RefreshToken: refreshtoken,
 	}
